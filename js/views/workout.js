@@ -114,6 +114,10 @@ async function renderExercise() {
             <input class="set-input ${fillClass}" type="number" inputmode="numeric" id="inp-reps-${si}"
               value="${repsVal}" placeholder="0" data-si="${si}" data-field="reps" style="width:72px">
             <span class="input-unit">sec</span>
+          ` : ex.isBodyweight ? `
+            <input class="set-input ${fillClass}" type="number" inputmode="numeric" id="inp-reps-${si}"
+              value="${repsVal}" placeholder="0" data-si="${si}" data-field="reps" style="width:72px">
+            <span class="input-unit">reps</span>
           ` : `
             <input class="set-input ${fillClass}" type="number" inputmode="decimal" id="inp-weight-${si}"
               value="${weightVal}" placeholder="${unitsLabel}" data-si="${si}" data-field="weight">
@@ -234,6 +238,7 @@ async function saveSession() {
         weight: v.weight ?? null,
         reps: v.reps ?? null,
         isTime: !!ex.isTime,
+        isBodyweight: !!ex.isBodyweight,
         done: !!v.done,
       };
     });

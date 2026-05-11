@@ -31,7 +31,7 @@ async function render() {
   if (!selectedExercise) {
     for (let i = sessions.length - 1; i >= 0 && !selectedExercise; i--) {
       const exs = sessions[i].exercises || [];
-      const ex = exs.find((e) => (e.sets || []).some((s) => s && s.weight && s.reps));
+      const ex = exs.find((e) => (e.sets || []).some((s) => s && s.reps && (s.weight || s.isBodyweight)));
       if (ex) selectedExercise = ex.name;
     }
     if (!selectedExercise) {
@@ -39,6 +39,9 @@ async function render() {
       if (all.length) selectedExercise = all[0].name;
     }
   }
+
+  const selectedMeta = allExercises().find((e) => e.name === selectedExercise);
+  const isBodyweight = !!(selectedMeta && selectedMeta.isBodyweight);
 
   // Calendar data
   const cells = new Map();
@@ -59,12 +62,26 @@ async function render() {
   for (const s of sessions) {
     const ex = (s.exercises || []).find((e) => e.name === selectedExercise);
     if (!ex) continue;
-    const best = bestE1RM(ex);
-    if (best) {
-      points.push({ date: new Date(s.date), value: best.value, label: `${best.set.weight}${unitsLabel} × ${best.set.reps}` });
-      mostRecent = best.set;
-      if (!allTimeBest || best.value > estimated1RM(allTimeBest.weight, allTimeBest.reps)) {
-        allTimeBest = best.set;
+    if (isBodyweight) {
+      const reps = (ex.sets || [])
+        .filter((set, i) => set && !(i === 0 && set.label === 'Warm-up'))
+        .map((set) => parseInt(set.reps, 10))
+        .filter(Number.isFinite);
+      if (!reps.length) continue;
+      const maxReps = Math.max(...reps);
+      points.push({ date: new Date(s.date), value: maxReps, label: `${maxReps} reps` });
+      mostRecent = { reps: maxReps };
+      if (!allTimeBest || maxReps > allTimeBest.reps) {
+        allTimeBest = { reps: maxReps };
+      }
+    } else {
+      const best = bestE1RM(ex);
+      if (best) {
+        points.push({ date: new Date(s.date), value: best.value, label: `${best.set.weight}${unitsLabel} × ${best.set.reps}` });
+        mostRecent = best.set;
+        if (!allTimeBest || best.value > estimated1RM(allTimeBest.weight, allTimeBest.reps)) {
+          allTimeBest = best.set;
+        }
       }
     }
   }
@@ -96,14 +113,14 @@ async function render() {
       <div class="set-summary-row">
         <div class="set-summary-card">
           <div class="set-summary-label">Most recent</div>
-          <div class="set-summary-val">${mostRecent ? `${mostRecent.weight}${unitsLabel} × ${mostRecent.reps}` : '—'}</div>
+          <div class="set-summary-val">${mostRecent ? (isBodyweight ? `${mostRecent.reps} reps` : `${mostRecent.weight}${unitsLabel} × ${mostRecent.reps}`) : '—'}</div>
         </div>
         <div class="set-summary-card">
           <div class="set-summary-label">All-time best</div>
-          <div class="set-summary-val">${allTimeBest ? `${allTimeBest.weight}${unitsLabel} × ${allTimeBest.reps}` : '—'}</div>
+          <div class="set-summary-val">${allTimeBest ? (isBodyweight ? `${allTimeBest.reps} reps` : `${allTimeBest.weight}${unitsLabel} × ${allTimeBest.reps}`) : '—'}</div>
         </div>
       </div>
-      <div class="chart-hint">Shows estimated 1RM (Brzycki) per session</div>
+      <div class="chart-hint">${isBodyweight ? 'Shows best set reps per session' : 'Shows estimated 1RM (Brzycki) per session'}</div>
     </section>
   `;
 

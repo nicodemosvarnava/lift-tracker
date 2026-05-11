@@ -1,5 +1,5 @@
 // Bump this when shipping changes — old caches are evicted on activate.
-const CACHE = 'lift-v2';
+const CACHE = 'lift-v3';
 
 const APP_SHELL = [
   './',
