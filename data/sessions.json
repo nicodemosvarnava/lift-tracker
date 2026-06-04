@@ -2314,5 +2314,253 @@
       }
     ],
     "id": "mpzj3nu8pefa3x"
+  },
+  {
+    "day": "B",
+    "date": "2026-06-04T14:18:24.434Z",
+    "durationMin": 52,
+    "exercises": [
+      {
+        "name": "Deadlift",
+        "muscle": "Posterior Chain",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "",
+            "reps": "20",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "",
+            "reps": "60",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "",
+            "reps": "70",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ]
+      },
+      {
+        "name": "Pull-ups",
+        "muscle": "Back / Lats",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": null,
+            "reps": "8",
+            "isTime": false,
+            "isBodyweight": true,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": null,
+            "reps": "5",
+            "isTime": false,
+            "isBodyweight": true,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": null,
+            "reps": "4",
+            "isTime": false,
+            "isBodyweight": true,
+            "done": true
+          }
+        ]
+      },
+      {
+        "name": "Seated Cable Row",
+        "muscle": "Mid Back",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "",
+            "reps": "45",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "",
+            "reps": "75",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "",
+            "reps": "75",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ]
+      },
+      {
+        "name": "Leg Press",
+        "muscle": "Quads",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "",
+            "reps": "50",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "",
+            "reps": "80",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "",
+            "reps": "80",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ]
+      },
+      {
+        "name": "Leg Curl",
+        "muscle": "Hamstrings",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "",
+            "reps": "37.5",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "",
+            "reps": "41.25",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "",
+            "reps": "37.5",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ]
+      },
+      {
+        "name": "Squat",
+        "muscle": "Quads / Glutes",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "",
+            "reps": "20",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "",
+            "reps": "60",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "",
+            "reps": "60",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ]
+      },
+      {
+        "name": "DB Bicep Curl",
+        "muscle": "Biceps",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "",
+            "reps": "14",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "",
+            "reps": "12",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ]
+      },
+      {
+        "name": "Rear Delt Fly",
+        "muscle": "Rear Delts",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "",
+            "reps": "27.50",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "",
+            "reps": "35",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "",
+            "reps": "37.50",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ]
+      }
+    ],
+    "id": "mpzkyvqrua7w2g"
   }
 ]
