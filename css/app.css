@@ -193,6 +193,47 @@ body {
 
 .last-session-sets { display: flex; gap: 8px; flex-wrap: wrap; }
 
+.last-note {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--accent);
+  font-style: italic;
+  word-break: break-word;
+}
+
+/* NOTE FOR NEXT SESSION */
+.ex-note-wrap { margin-bottom: 20px; }
+
+.ex-note-label {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.ex-note {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 10px 12px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.ex-note::placeholder { color: var(--muted); }
+.ex-note:focus { border-color: var(--accent); }
+
 .last-set-chip {
   display: flex;
   flex-direction: column;
@@ -415,6 +456,15 @@ body {
   border-radius: 4px;
   padding: 3px 8px;
   color: var(--muted);
+}
+
+.history-note {
+  margin-top: 5px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--accent);
+  font-style: italic;
+  word-break: break-word;
 }
 
 .empty-history { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 14px; }

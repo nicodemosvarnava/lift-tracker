@@ -55,6 +55,17 @@ async function render() {
   // Streak / counts
   const stats = computeStreaks(sessions);
 
+  // For non-bodyweight exercises we plot estimated 1RM, which needs both weight
+  // and reps. If no session has both (e.g. weight-only history logged before
+  // reps existed), fall back to plotting the top set weight so the chart still
+  // shows something instead of "No data yet".
+  const useWeightFallback =
+    !isBodyweight &&
+    !sessions.some((s) => {
+      const ex = (s.exercises || []).find((e) => e.name === selectedExercise);
+      return ex && bestE1RM(ex);
+    });
+
   // Per-exercise progression points
   const points = [];
   let mostRecent = null;
@@ -73,6 +84,18 @@ async function render() {
       mostRecent = { reps: maxReps };
       if (!allTimeBest || maxReps > allTimeBest.reps) {
         allTimeBest = { reps: maxReps };
+      }
+    } else if (useWeightFallback) {
+      const weights = (ex.sets || [])
+        .filter((set, i) => set && !(i === 0 && set.label === 'Warm-up'))
+        .map((set) => parseFloat(set.weight))
+        .filter((w) => Number.isFinite(w) && w > 0);
+      if (!weights.length) continue;
+      const topWeight = Math.max(...weights);
+      points.push({ date: new Date(s.date), value: topWeight, label: `${topWeight}${unitsLabel}` });
+      mostRecent = { weight: topWeight, reps: null };
+      if (!allTimeBest || topWeight > (allTimeBest.weight || 0)) {
+        allTimeBest = { weight: topWeight, reps: null };
       }
     } else {
       const best = bestE1RM(ex);
@@ -113,14 +136,20 @@ async function render() {
       <div class="set-summary-row">
         <div class="set-summary-card">
           <div class="set-summary-label">Most recent</div>
-          <div class="set-summary-val">${mostRecent ? (isBodyweight ? `${mostRecent.reps} reps` : `${mostRecent.weight}${unitsLabel} × ${mostRecent.reps}`) : '—'}</div>
+          <div class="set-summary-val">${fmtSet(mostRecent, isBodyweight)}</div>
         </div>
         <div class="set-summary-card">
           <div class="set-summary-label">All-time best</div>
-          <div class="set-summary-val">${allTimeBest ? (isBodyweight ? `${allTimeBest.reps} reps` : `${allTimeBest.weight}${unitsLabel} × ${allTimeBest.reps}`) : '—'}</div>
+          <div class="set-summary-val">${fmtSet(allTimeBest, isBodyweight)}</div>
         </div>
       </div>
-      <div class="chart-hint">${isBodyweight ? 'Shows best set reps per session' : 'Shows estimated 1RM (Brzycki) per session'}</div>
+      <div class="chart-hint">${
+        isBodyweight
+          ? 'Shows best set reps per session'
+          : useWeightFallback
+            ? 'Shows top set weight per session — add reps to track 1RM'
+            : 'Shows estimated 1RM (Brzycki) per session'
+      }</div>
     </section>
   `;
 
@@ -195,4 +224,11 @@ function nextWeekKey(wk) {
 
 function escapeAttr(s) {
   return String(s).replace(/"/g, '&quot;');
+}
+
+function fmtSet(set, isBodyweight) {
+  if (!set) return '—';
+  if (isBodyweight) return `${set.reps} reps`;
+  if (set.reps != null && set.reps !== '') return `${set.weight}${unitsLabel} × ${set.reps}`;
+  return `${set.weight}${unitsLabel}`;
 }

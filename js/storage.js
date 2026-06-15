@@ -98,20 +98,49 @@ export async function saveSession(session) {
   return s;
 }
 
-export async function getLastSession(day, exName) {
+// True when at least one set carries a real (non-empty) weight or reps value.
+// Skipped exercises are persisted with all-null sets — those should NOT count.
+function exHasData(ex) {
+  return (
+    !!ex &&
+    Array.isArray(ex.sets) &&
+    ex.sets.some(
+      (s) =>
+        s &&
+        ((s.weight != null && s.weight !== '') || (s.reps != null && s.reps !== '')),
+    )
+  );
+}
+
+export async function getLastSession(day, exName, { withData = false } = {}) {
   const all = await getSessions();
   for (let i = all.length - 1; i >= 0; i--) {
     const s = all[i];
     if (s.day !== day) continue;
     const ex = (s.exercises || []).find((e) => e.name === exName);
-    if (ex) return ex;
+    if (ex && (!withData || exHasData(ex))) return ex;
   }
   return null;
 }
 
 export async function getLastSets(day, exName) {
-  const ex = await getLastSession(day, exName);
+  // Only prefill / show "Last Session" from a session where this exercise was
+  // actually logged — otherwise a skipped (all-null) entry shadows real data.
+  const ex = await getLastSession(day, exName, { withData: true });
   return ex ? ex.sets : null;
+}
+
+// Most recent non-empty note for an exercise, independent of set data so a
+// skip-with-note still surfaces next session.
+export async function getLastNote(day, exName) {
+  const all = await getSessions();
+  for (let i = all.length - 1; i >= 0; i--) {
+    const s = all[i];
+    if (s.day !== day) continue;
+    const ex = (s.exercises || []).find((e) => e.name === exName);
+    if (ex && ex.note) return ex.note;
+  }
+  return null;
 }
 
 // ---- draft ----

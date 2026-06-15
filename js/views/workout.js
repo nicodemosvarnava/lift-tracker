@@ -6,13 +6,17 @@ import { showToast, refreshSyncIndicator } from '../app.js';
 let currentDay = 'A';
 let currentExIndex = 0;
 let sessionStart = null;
-let draftCache = {}; // { [exName]: { [setIdx]: { weight, reps, done } } }
+let draftCache = {}; // { [exName]: { [setIdx]: { weight, reps, done }, note: string } }
 let unitsLabel = 'kg';
 
 function getSetClass(idx) {
   if (idx === 0) return 'warm-up';
   if (idx === 1) return 'working-1';
   return 'working-2';
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 function getExState(exName) {
@@ -45,11 +49,18 @@ async function setSet(exName, si, patch) {
   await persistDraft();
 }
 
+async function setNote(exName, note) {
+  if (!draftCache[exName]) draftCache[exName] = {};
+  draftCache[exName].note = note;
+  await persistDraft();
+}
+
 async function renderExercise() {
   const program = PROGRAMS[currentDay];
   const ex = program.exercises[currentExIndex];
   const exState = getExState(ex.name);
   const lastSets = await storage.getLastSets(currentDay, ex.name);
+  const lastNote = await storage.getLastNote(currentDay, ex.name);
 
   const total = program.exercises.length;
   const doneSoFar = program.exercises.filter((_, ei) => isExerciseDone(ei)).length;
@@ -88,7 +99,11 @@ async function renderExercise() {
   } else {
     html += `<span class="no-history">No previous data</span>`;
   }
-  html += `</div></div>`;
+  html += `</div>`;
+  if (lastNote) {
+    html += `<div class="last-note">📝 ${escapeHtml(lastNote)}</div>`;
+  }
+  html += `</div>`;
 
   html += `<div class="sets-container">`;
   ex.sets.forEach((setLabel, si) => {
@@ -133,6 +148,13 @@ async function renderExercise() {
   });
   html += `</div>`;
 
+  const noteVal = exState.note || '';
+  html += `<div class="ex-note-wrap">
+    <label class="ex-note-label" for="inp-note">Note for next session</label>
+    <textarea class="ex-note" id="inp-note" rows="2"
+      placeholder="e.g. go up 2.5kg next time, felt easy">${escapeHtml(noteVal)}</textarea>
+  </div>`;
+
   html += `<div class="nav-buttons">
     <button class="nav-btn prev ${currentExIndex === 0 ? 'disabled' : ''}" id="btn-prev">← Back</button>
     <button class="nav-btn next" id="btn-next">
@@ -151,6 +173,8 @@ async function renderExercise() {
   view.querySelectorAll('.set-done-btn').forEach((el) => {
     el.addEventListener('click', () => toggleDone(parseInt(el.dataset.si, 10)));
   });
+  const noteEl = document.getElementById('inp-note');
+  if (noteEl) noteEl.addEventListener('input', onNoteChange);
   document.getElementById('btn-prev').addEventListener('click', prevEx);
   document.getElementById('btn-next').addEventListener('click', nextEx);
 }
@@ -167,6 +191,11 @@ async function onInputChange(e) {
   const v = e.target.value;
   await setSet(ex.name, si, { [field]: v });
   e.target.classList.remove('prefilled');
+}
+
+async function onNoteChange(e) {
+  const ex = PROGRAMS[currentDay].exercises[currentExIndex];
+  await setNote(ex.name, e.target.value);
 }
 
 async function toggleDone(si) {
@@ -229,21 +258,33 @@ function showDoneScreen() {
 
 async function saveSession() {
   const program = PROGRAMS[currentDay];
-  const exercises = program.exercises.map((ex) => {
-    const exState = getExState(ex.name);
-    const sets = ex.sets.map((label, si) => {
-      const v = exState[si] || {};
-      return {
-        label,
-        weight: v.weight ?? null,
-        reps: v.reps ?? null,
-        isTime: !!ex.isTime,
-        isBodyweight: !!ex.isBodyweight,
-        done: !!v.done,
-      };
-    });
-    return { name: ex.name, muscle: ex.muscle, sets };
-  });
+  const exercises = program.exercises
+    .map((ex) => {
+      const exState = getExState(ex.name);
+      // Only keep sets that were actually logged (have a value or were marked
+      // done). Skipped exercises shouldn't pollute history / shadow last week.
+      const sets = ex.sets
+        .map((label, si) => {
+          const v = exState[si] || {};
+          return {
+            label,
+            weight: v.weight ?? null,
+            reps: v.reps ?? null,
+            isTime: !!ex.isTime,
+            isBodyweight: !!ex.isBodyweight,
+            done: !!v.done,
+          };
+        })
+        .filter(
+          (s) =>
+            (s.weight != null && s.weight !== '') ||
+            (s.reps != null && s.reps !== '') ||
+            s.done,
+        );
+      const note = (exState.note || '').trim();
+      return { name: ex.name, muscle: ex.muscle, sets, note: note || null };
+    })
+    .filter((ex) => ex.sets.length > 0 || ex.note);
 
   const duration = sessionStart ? Math.round((Date.now() - sessionStart) / 60000) : null;
   const saved = await storage.saveSession({

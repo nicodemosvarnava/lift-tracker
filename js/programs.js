@@ -18,7 +18,6 @@ export const PROGRAMS = {
       { name: 'Deadlift', muscle: 'Posterior Chain', reps: '5–8', sets: ['Warm-up', 'Set 1', 'Set 2'] },
       { name: 'Pull-ups', muscle: 'Back / Lats', reps: '6–10', sets: ['Warm-up', 'Set 1', 'Set 2'], isBodyweight: true },
       { name: 'Seated Cable Row', muscle: 'Mid Back', reps: '8–12', sets: ['Warm-up', 'Set 1', 'Set 2'] },
-      { name: 'Leg Press', muscle: 'Quads', reps: '8–12', sets: ['Warm-up', 'Set 1', 'Set 2'] },
       { name: 'Leg Curl', muscle: 'Hamstrings', reps: '10–12', sets: ['Warm-up', 'Set 1', 'Set 2'] },
       { name: 'Squat', muscle: 'Quads / Glutes', reps: '8–12', sets: ['Warm-up', 'Set 1', 'Set 2'] },
       { name: 'DB Bicep Curl', muscle: 'Biceps', reps: '10–15', sets: ['Warm-up', 'Set 1', 'Set 2'] },

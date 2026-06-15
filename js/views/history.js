@@ -38,23 +38,31 @@ async function render() {
 
     (session.exercises || []).forEach((ex) => {
       const hasAny = (ex.sets || []).some((s) => s && (s.weight || s.reps));
-      if (!hasAny) return;
+      if (!hasAny && !ex.note) return;
       html += `<div class="history-ex">
         <div class="history-ex-name">${ex.name}</div>
         <div class="history-sets-row">`;
-      ex.sets.forEach((s, si) => {
+      (ex.sets || []).forEach((s, si) => {
         if (s && (s.weight || s.reps)) {
           const label = s.label ? abbrev(s.label) : (si === 0 ? 'W' : `S${si}`);
           const weightStr = s.weight ? `${s.weight}${unitsLabel} × ` : '';
           html += `<span class="history-set-chip">${label}: ${weightStr}${s.reps || '—'}</span>`;
         }
       });
-      html += `</div></div>`;
+      html += `</div>`;
+      if (ex.note) {
+        html += `<div class="history-note">📝 ${escapeHtml(ex.note)}</div>`;
+      }
+      html += `</div>`;
     });
     html += `</div>`;
   });
 
   container.innerHTML = html;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 function abbrev(label) {
