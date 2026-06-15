@@ -30,15 +30,15 @@
         "sets": [
           {
             "label": "Round 1",
-            "weight": "",
-            "reps": "0",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "done": true
           },
           {
             "label": "Round 2",
-            "weight": "",
-            "reps": "10",
+            "weight": 10,
+            "reps": 20,
             "isTime": false,
             "done": true
           }
@@ -50,22 +50,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "0",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "10",
+            "weight": 10,
+            "reps": 15,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "10",
+            "weight": 10,
+            "reps": 15,
             "isTime": false,
             "done": true
           }
@@ -77,22 +77,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "0",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "30",
+            "weight": 30,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "40",
+            "weight": 40,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -104,22 +104,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "24",
+            "weight": 24,
+            "reps": 10,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "40",
+            "weight": 40,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "40",
+            "weight": 40,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -131,22 +131,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "24",
+            "weight": 24,
+            "reps": 10,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "36",
+            "weight": 36,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "32",
+            "weight": 32,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -158,22 +158,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "12",
+            "weight": 12,
+            "reps": 10,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "12",
+            "weight": 12,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "12",
+            "weight": 12,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -185,22 +185,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "21.75",
+            "weight": 21.75,
+            "reps": 10,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "28.75",
+            "weight": 28.75,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "28.75",
+            "weight": 28.75,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -220,22 +220,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "0",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "40",
+            "weight": 40,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "40",
+            "weight": 40,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -274,22 +274,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "35",
+            "weight": 35,
+            "reps": 10,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "65",
+            "weight": 65,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "65",
+            "weight": 65,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -301,22 +301,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "57.5",
+            "weight": 57.5,
+            "reps": 10,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "80",
+            "weight": 80,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "80",
+            "weight": 80,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -328,22 +328,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "30",
+            "weight": 30,
+            "reps": 10,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "35",
+            "weight": 35,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "35",
+            "weight": 35,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -382,22 +382,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "16.25",
+            "weight": 16.25,
+            "reps": 10,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "23.75",
+            "weight": 23.75,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "26.25",
+            "weight": 26.25,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -409,22 +409,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "35",
+            "weight": 35,
+            "reps": 10,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "37.50",
+            "weight": 37.5,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "37.50",
+            "weight": 37.5,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -464,15 +464,15 @@
         "sets": [
           {
             "label": "Round 1",
-            "weight": "",
-            "reps": "0",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "done": true
           },
           {
             "label": "Round 2",
-            "weight": "",
-            "reps": "10",
+            "weight": 10,
+            "reps": 20,
             "isTime": false,
             "done": true
           }
@@ -484,22 +484,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "0",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "15",
+            "weight": 15,
+            "reps": 15,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "15",
+            "weight": 15,
+            "reps": 15,
             "isTime": false,
             "done": true
           }
@@ -511,22 +511,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "0",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "30",
+            "weight": 30,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "45",
+            "weight": 45,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -538,22 +538,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "28",
+            "weight": 28,
+            "reps": 10,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "40",
+            "weight": 40,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "44",
+            "weight": 44,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -565,22 +565,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "28",
+            "weight": 28,
+            "reps": 10,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "36",
+            "weight": 36,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "36",
+            "weight": 36,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -592,22 +592,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "16",
+            "weight": 16,
+            "reps": 10,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "14",
+            "weight": 14,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "14",
+            "weight": 14,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -619,22 +619,22 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "21.75",
+            "weight": 21.75,
+            "reps": 10,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "31.25",
+            "weight": 31.25,
+            "reps": 8,
             "isTime": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "31.25",
+            "weight": 31.25,
+            "reps": 8,
             "isTime": false,
             "done": true
           }
@@ -654,24 +654,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "0",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "40",
+            "weight": 40,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "40",
+            "weight": 40,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -714,24 +714,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "40",
+            "weight": 40,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "71",
+            "weight": 71,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "71",
+            "weight": 71,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -744,24 +744,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "65",
+            "weight": 65,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "80",
+            "weight": 80,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "85",
+            "weight": 85,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -774,24 +774,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "35",
+            "weight": 35,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "55",
+            "weight": 55,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "55",
+            "weight": 55,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -834,24 +834,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "24",
+            "weight": 24,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "28",
+            "weight": 28,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "28",
+            "weight": 28,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -864,24 +864,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "27.50",
+            "weight": 27.5,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "42.50",
+            "weight": 42.5,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "37.50",
+            "weight": 37.5,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -924,16 +924,16 @@
         "sets": [
           {
             "label": "Round 1",
-            "weight": "",
-            "reps": "0",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Round 2",
-            "weight": "",
-            "reps": "10",
+            "weight": 10,
+            "reps": 20,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -946,24 +946,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "0",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "15",
+            "weight": 15,
+            "reps": 15,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "15",
+            "weight": 15,
+            "reps": 15,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -976,24 +976,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "0",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "40",
+            "weight": 40,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "40",
+            "weight": 40,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1006,24 +1006,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "32",
+            "weight": 32,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "40",
+            "weight": 40,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "40",
+            "weight": 40,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1036,24 +1036,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "28",
+            "weight": 28,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "32",
+            "weight": 32,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "32",
+            "weight": 32,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1066,24 +1066,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "12",
+            "weight": 12,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "14",
+            "weight": 14,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "14",
+            "weight": 14,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1096,24 +1096,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "21.25",
+            "weight": 21.25,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "31.25",
+            "weight": 31.25,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "31.25",
+            "weight": 31.25,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1134,24 +1134,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "20",
+            "weight": 20,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "60",
+            "weight": 60,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "70",
+            "weight": 70,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1254,24 +1254,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "42.5",
+            "weight": 42.5,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "57.5",
+            "weight": 57.5,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "57.5",
+            "weight": 57.5,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1284,24 +1284,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "20",
+            "weight": 20,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "50",
+            "weight": 50,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "60",
+            "weight": 60,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1314,24 +1314,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "28",
+            "weight": 28,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "36",
+            "weight": 36,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "36",
+            "weight": 36,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1344,24 +1344,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "27.50",
+            "weight": 27.5,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "42.50",
+            "weight": 42.5,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "42.50",
+            "weight": 42.5,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1404,16 +1404,16 @@
         "sets": [
           {
             "label": "Round 1",
-            "weight": "",
-            "reps": "10",
+            "weight": 10,
+            "reps": 20,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Round 2",
-            "weight": "",
-            "reps": "10",
+            "weight": 10,
+            "reps": 20,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1426,24 +1426,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "0",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "15",
+            "weight": 15,
+            "reps": 15,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "15",
+            "weight": 15,
+            "reps": 15,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1456,24 +1456,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "0",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "40",
+            "weight": 40,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "45",
+            "weight": 45,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1486,24 +1486,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "36",
+            "weight": 36,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "44",
+            "weight": 44,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "44",
+            "weight": 44,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1516,24 +1516,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "24",
+            "weight": 24,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "24",
+            "weight": 24,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "24",
+            "weight": 24,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1546,24 +1546,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "12",
+            "weight": 12,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "14",
+            "weight": 14,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "14",
+            "weight": 14,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1576,24 +1576,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "21.25",
+            "weight": 21.25,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "26.25",
+            "weight": 26.25,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "26.25",
+            "weight": 26.25,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1846,24 +1846,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "20",
+            "weight": 20,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "60",
+            "weight": 60,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "70",
+            "weight": 70,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1906,24 +1906,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "41",
+            "weight": 41,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "71",
+            "weight": 71,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "71",
+            "weight": 71,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1936,24 +1936,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "50",
+            "weight": 50,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "80",
+            "weight": 80,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "80",
+            "weight": 80,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1966,24 +1966,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "41.25",
+            "weight": 41.25,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "45",
+            "weight": 45,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "45",
+            "weight": 45,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -1996,24 +1996,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "13",
+            "weight": 13,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "53",
+            "weight": 53,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "58",
+            "weight": 58,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2026,24 +2026,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "28",
+            "weight": 28,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "36",
+            "weight": 36,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "40",
+            "weight": 40,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2056,24 +2056,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "27.50",
+            "weight": 27.5,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "42.50",
+            "weight": 42.5,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "42.50",
+            "weight": 42.5,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2116,16 +2116,16 @@
         "sets": [
           {
             "label": "Round 1",
-            "weight": "",
-            "reps": "10",
+            "weight": 10,
+            "reps": 20,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Round 2",
-            "weight": "",
-            "reps": "10",
+            "weight": 10,
+            "reps": 20,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2138,24 +2138,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "15",
+            "weight": 15,
+            "reps": 15,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "15",
+            "weight": 15,
+            "reps": 15,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2168,24 +2168,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "0",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "50",
+            "weight": 50,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "55",
+            "weight": 55,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2198,24 +2198,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "36",
+            "weight": 36,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "44",
+            "weight": 44,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "44",
+            "weight": 44,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2228,24 +2228,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "18",
+            "weight": 18,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "24",
+            "weight": 24,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "28",
+            "weight": 28,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2258,24 +2258,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "14",
+            "weight": 14,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "14",
+            "weight": 14,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "14",
+            "weight": 14,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2288,24 +2288,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "16.25",
+            "weight": 16.25,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "23.75",
+            "weight": 23.75,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "23.75",
+            "weight": 23.75,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2326,24 +2326,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "20",
+            "weight": 20,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "60",
+            "weight": 60,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "70",
+            "weight": 70,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2386,24 +2386,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "45",
+            "weight": 45,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "75",
+            "weight": 75,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "75",
+            "weight": 75,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2416,24 +2416,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "50",
+            "weight": 50,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "80",
+            "weight": 80,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "80",
+            "weight": 80,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2446,24 +2446,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "37.5",
+            "weight": 37.5,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "41.25",
+            "weight": 41.25,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "37.5",
+            "weight": 37.5,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2476,24 +2476,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "20",
+            "weight": 20,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "60",
+            "weight": 60,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "60",
+            "weight": 60,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2506,24 +2506,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "10",
+            "weight": 10,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "14",
+            "weight": 14,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "12",
+            "weight": 12,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2536,24 +2536,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "27.50",
+            "weight": 27.5,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "35",
+            "weight": 35,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "37.50",
+            "weight": 37.5,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2596,16 +2596,16 @@
         "sets": [
           {
             "label": "Round 1",
-            "weight": "",
-            "reps": "15",
+            "weight": 15,
+            "reps": 20,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Round 2",
-            "weight": "",
-            "reps": "15",
+            "weight": 15,
+            "reps": 20,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2618,24 +2618,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "15",
+            "weight": 15,
+            "reps": 15,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "15",
+            "weight": 15,
+            "reps": 15,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2648,24 +2648,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "0",
+            "weight": null,
+            "reps": null,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "50",
+            "weight": 50,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "60",
+            "weight": 60,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2678,24 +2678,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "36",
+            "weight": 36,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "44",
+            "weight": 44,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "44",
+            "weight": 44,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2708,24 +2708,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "18",
+            "weight": 18,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "24",
+            "weight": 24,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "28",
+            "weight": 28,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2738,24 +2738,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "12",
+            "weight": 12,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "16",
+            "weight": 16,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "16",
+            "weight": 16,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
@@ -2768,24 +2768,24 @@
         "sets": [
           {
             "label": "Warm-up",
-            "weight": "",
-            "reps": "16.25",
+            "weight": 16.25,
+            "reps": 10,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 1",
-            "weight": "",
-            "reps": "23.75",
+            "weight": 23.75,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true
           },
           {
             "label": "Set 2",
-            "weight": "",
-            "reps": "23.75",
+            "weight": 23.75,
+            "reps": 8,
             "isTime": false,
             "isBodyweight": false,
             "done": true

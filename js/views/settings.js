@@ -72,8 +72,11 @@ async function render() {
       ${backupNudge}
       <button class="settings-btn primary" id="btn-export">Export backup</button>
       <button class="settings-btn" id="btn-import">Import backup…</button>
+      <button class="settings-btn" id="btn-import-merge">Merge import…</button>
       <input type="file" id="import-file" accept="application/json,.json" style="display:none">
+      <input type="file" id="import-merge-file" accept="application/json,.json" style="display:none">
       <div class="settings-hint">${sessionCount} session${sessionCount === 1 ? '' : 's'} stored locally on this device.</div>
+      <div class="settings-hint">Import = replace everything. Merge = update matching sessions, keep your settings &amp; token.</div>
     </section>
 
     <section class="settings-section">
@@ -96,6 +99,10 @@ async function render() {
     document.getElementById('import-file').click();
   });
   document.getElementById('import-file').addEventListener('change', importBackup);
+  document.getElementById('btn-import-merge').addEventListener('click', () => {
+    document.getElementById('import-merge-file').click();
+  });
+  document.getElementById('import-merge-file').addEventListener('change', importMerge);
   container.querySelectorAll('input[name="units"]').forEach((el) => {
     el.addEventListener('change', async () => {
       await storage.setSetting('units', el.value);
@@ -196,15 +203,21 @@ async function exportBackup() {
   render();
 }
 
+// Accept either a full export object { schemaVersion, sessions, … } or a bare
+// sessions array (e.g. the repo's data/sessions.json downloaded directly).
+function parsePayload(text) {
+  const raw = JSON.parse(text);
+  const payload = Array.isArray(raw) ? { schemaVersion: 1, sessions: raw } : raw;
+  if (!payload || !Array.isArray(payload.sessions)) throw new Error('File is not a valid backup');
+  if (typeof payload.schemaVersion !== 'number') payload.schemaVersion = 1;
+  return payload;
+}
+
 async function importBackup(e) {
   const file = e.target.files && e.target.files[0];
   if (!file) return;
   try {
-    const text = await file.text();
-    const payload = JSON.parse(text);
-    if (!payload || !Array.isArray(payload.sessions)) {
-      throw new Error('File is not a valid backup');
-    }
+    const payload = parsePayload(await file.text());
     const sessionCount = payload.sessions.length;
     const dateStr = payload.exportedAt ? new Date(payload.exportedAt).toLocaleDateString('en-GB') : 'unknown date';
     const ok = window.confirm(`Replace all data with ${sessionCount} session${sessionCount === 1 ? '' : 's'} from ${dateStr}?\n\nYour current data will be deleted.`);
@@ -218,6 +231,29 @@ async function importBackup(e) {
     render();
   } catch (err) {
     alert(`Import failed: ${err.message || err}`);
+    e.target.value = '';
+  }
+}
+
+// Merge: overwrite sessions with a matching id, add any new ones, and KEEP
+// existing settings (GitHub token, units, …), draft, and other sessions.
+async function importMerge(e) {
+  const file = e.target.files && e.target.files[0];
+  if (!file) return;
+  try {
+    const payload = parsePayload(await file.text());
+    const n = payload.sessions.length;
+    const ok = window.confirm(`Merge ${n} session${n === 1 ? '' : 's'} into this device?\n\nSessions with the same id are overwritten; your settings, GitHub token, and other sessions are kept.`);
+    if (!ok) {
+      e.target.value = '';
+      return;
+    }
+    await storage.importAll(payload, { replace: false });
+    showToast(`Merged ${n} session${n === 1 ? '' : 's'}`);
+    e.target.value = '';
+    render();
+  } catch (err) {
+    alert(`Merge failed: ${err.message || err}`);
     e.target.value = '';
   }
 }
