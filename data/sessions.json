@@ -4352,5 +4352,245 @@
       }
     ],
     "id": "mrasi62pi6gk7t"
+  },
+  {
+    "day": "A",
+    "date": "2026-07-09T16:15:28.967Z",
+    "durationMin": 47,
+    "exercises": [
+      {
+        "name": "Plank",
+        "muscle": "Core",
+        "sets": [
+          {
+            "label": "Round 1",
+            "weight": null,
+            "reps": "70",
+            "isTime": true,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Round 2",
+            "weight": null,
+            "reps": "60",
+            "isTime": true,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "Russian Twists",
+        "muscle": "Obliques",
+        "sets": [
+          {
+            "label": "Round 1",
+            "weight": "0",
+            "reps": "20",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Round 2",
+            "weight": "0",
+            "reps": "20",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "45deg Back Extension",
+        "muscle": "Lower Back",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "0",
+            "reps": "15",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "15",
+            "reps": "14",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "15",
+            "reps": "15",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "Bench Press",
+        "muscle": "Chest",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "0",
+            "reps": "15",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "15",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "25",
+            "reps": "6",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "Incline DB Press",
+        "muscle": "Upper Chest",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "44",
+            "reps": "8",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "44",
+            "reps": "8",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "44",
+            "reps": "7",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "Overhead Press",
+        "muscle": "Shoulders",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "20",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "28",
+            "reps": "9",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "28",
+            "reps": "7",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "Lateral Raises",
+        "muscle": "Delts",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "14",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "16",
+            "reps": "8",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "16",
+            "reps": "8",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "Tricep Dips",
+        "muscle": "Triceps",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "16.25",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "26.25",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "26.25",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      }
+    ],
+    "id": "mrdpk98or70d7n"
   }
 ]
