@@ -2,6 +2,7 @@ import { PROGRAMS, suggestSets } from '../programs.js';
 import * as storage from '../storage.js';
 import * as sync from '../sync.js';
 import { showToast, refreshSyncIndicator } from '../app.js';
+import { escapeHtml } from '../util.js';
 
 let currentDay = 'A';
 let currentExIndex = 0;
@@ -24,9 +25,6 @@ function stepper(field, si, val, fillClass, { placeholder = '—', inputmode = '
   </div>`;
 }
 
-function escapeHtml(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
 
 function getExState(exName) {
   return draftCache[exName] || {};
@@ -384,8 +382,8 @@ async function resetWorkout() {
 async function switchDay(day) {
   currentDay = day;
   currentExIndex = 0;
-  document.querySelectorAll('.day-tab').forEach((t, i) => {
-    t.classList.toggle('active', (i === 0 && day === 'A') || (i === 1 && day === 'B'));
+  document.querySelectorAll('.day-tab').forEach((t) => {
+    t.classList.toggle('active', t.dataset.day === day);
   });
   document.getElementById('done-screen').classList.remove('visible');
   document.getElementById('workout-view').style.display = '';
@@ -399,8 +397,8 @@ export async function mount(container, { units = 'kg' } = {}) {
   unitsLabel = units;
 
   // Wire static controls (these elements live in index.html)
-  document.querySelectorAll('.day-tab').forEach((btn, i) => {
-    btn.addEventListener('click', () => switchDay(i === 0 ? 'A' : 'B'));
+  document.querySelectorAll('.day-tab').forEach((btn) => {
+    btn.addEventListener('click', () => switchDay(btn.dataset.day));
   });
   document.getElementById('ex-dropdown').addEventListener('change', (e) => jumpToExercise(e.target.value));
   document.getElementById('btn-save').addEventListener('click', saveSession);

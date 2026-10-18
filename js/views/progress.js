@@ -1,5 +1,6 @@
 import * as storage from '../storage.js';
 import { allExercises } from '../programs.js';
+import { escapeHtml } from '../util.js';
 import { lineChart, heatmap, isoDate, estimated1RM, bestE1RM } from '../chart.js';
 
 let unitsLabel = 'kg';
@@ -110,7 +111,7 @@ async function render() {
   }
 
   const exerciseOptions = allExercises(sessions)
-    .map((e) => `<option value="${escapeAttr(e.name)}" ${e.name === selectedExercise ? 'selected' : ''}>${e.name} <em>(${e.day})</em></option>`)
+    .map((e) => `<option value="${escapeHtml(e.name)}" ${e.name === selectedExercise ? 'selected' : ''}>${escapeHtml(e.name)} (${e.day})</option>`)
     .join('');
 
   container.innerHTML = `
@@ -187,7 +188,7 @@ function computeStreaks(sessions) {
     cursor.setDate(cursor.getDate() - 7);
   }
 
-  // Longest streak: scan all weeks present, find longest run of consecutive ISO weeks.
+  // Longest streak: scan all weeks present, find longest run of consecutive weeks.
   const weekSet = weeksWithSession;
   let longest = 0;
   for (const wk of weekSet) {
@@ -203,28 +204,18 @@ function computeStreaks(sessions) {
   return { currentStreak: cur, longestStreak: longest, last7, last30 };
 }
 
+// Weeks are keyed by the local date of their Monday, so stepping to the next
+// week is just +7 days (no ISO week-number edge cases at New Year).
 function weekKey(d) {
-  // ISO week-year + week (rough — sufficient for streak grouping)
-  const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-  const dayNum = (date.getUTCDay() + 6) % 7; // Mon=0
-  date.setUTCDate(date.getUTCDate() - dayNum + 3);
-  const firstThursday = new Date(Date.UTC(date.getUTCFullYear(), 0, 4));
-  const week = 1 + Math.round(((date - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7);
-  return `${date.getUTCFullYear()}-W${String(week).padStart(2, '0')}`;
+  const monday = new Date(d.getFullYear(), d.getMonth(), d.getDate() - ((d.getDay() + 6) % 7));
+  return `${monday.getFullYear()}-${String(monday.getMonth() + 1).padStart(2, '0')}-${String(monday.getDate()).padStart(2, '0')}`;
 }
 
 function nextWeekKey(wk) {
-  const m = wk.match(/^(\d+)-W(\d+)$/);
-  const y = parseInt(m[1], 10);
-  const w = parseInt(m[2], 10);
-  // crude: bump week by 1, roll over after week 52 (week 53 still gets evaluated correctly via membership check)
-  const probe = new Date(Date.UTC(y, 0, 1 + (w) * 7));
-  return weekKey(new Date(probe.getUTCFullYear(), probe.getUTCMonth(), probe.getUTCDate()));
+  const [y, m, d] = wk.split('-').map(Number);
+  return weekKey(new Date(y, m - 1, d + 7));
 }
 
-function escapeAttr(s) {
-  return String(s).replace(/"/g, '&quot;');
-}
 
 function fmtSet(set, isBodyweight) {
   if (!set) return '—';

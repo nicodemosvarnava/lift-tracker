@@ -195,7 +195,8 @@ export async function exportAll() {
       req.onerror = () => reject(req.error);
     });
   })();
-  const settings = await getAllSettings();
+  // Never write the GitHub token into a file that gets shared or stored around.
+  const { gh_pat: _pat, ...settings } = await getAllSettings();
   return {
     schemaVersion: SCHEMA_VERSION,
     exportedAt: new Date().toISOString(),
@@ -210,6 +211,7 @@ export async function importAll(payload, { replace = true } = {}) {
   if (!Array.isArray(payload.sessions)) throw new Error('Invalid: sessions missing');
   if (typeof payload.schemaVersion !== 'number') throw new Error('Invalid: schemaVersion missing');
 
+  const keepPat = await getSetting('gh_pat'); // backups don't carry the token
   const db = await openDB();
   await new Promise((resolve, reject) => {
     const t = db.transaction(['sessions', 'draft', 'settings'], 'readwrite');
@@ -234,6 +236,9 @@ export async function importAll(payload, { replace = true } = {}) {
       for (const [k, v] of Object.entries(payload.settings)) {
         t.objectStore('settings').put({ key: k, value: v });
       }
+    }
+    if (keepPat && !(payload.settings && payload.settings.gh_pat)) {
+      t.objectStore('settings').put({ key: 'gh_pat', value: keepPat });
     }
     // keep migration flag and schema version after replace
     t.objectStore('settings').put({ key: 'migratedFromLS', value: true });

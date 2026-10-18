@@ -1,8 +1,7 @@
 import * as storage from '../storage.js';
 import * as sync from '../sync.js';
 import { showToast, refreshSyncIndicator } from '../app.js';
-
-const APP_VERSION = '1.0.0';
+import { escapeHtml } from '../util.js';
 
 let onUnitsChange = null;
 
@@ -29,6 +28,8 @@ async function render() {
   const lastSync = await storage.getSetting('gh_lastSync');
   const queue = await sync.getQueue();
   const queueCount = queue.length;
+  // The service worker's cache name is the shipped version (bumped every release).
+  const version = (await caches.keys().catch(() => [])).find((k) => k.startsWith('lift-')) || 'dev';
 
   const lastBackupStr = lastBackup
     ? formatRelative(new Date(lastBackup))
@@ -52,11 +53,11 @@ async function render() {
       <div class="section-title">GitHub Sync</div>
       ${syncStatus}
       <label class="field-label">Owner</label>
-      <input class="field-input" id="gh-owner" placeholder="your-github-username" value="${escapeAttr(ghCfg.owner)}">
+      <input class="field-input" id="gh-owner" placeholder="your-github-username" value="${escapeHtml(ghCfg.owner)}">
       <label class="field-label">Repo</label>
-      <input class="field-input" id="gh-repo" placeholder="lift-tracker" value="${escapeAttr(ghCfg.repo)}">
+      <input class="field-input" id="gh-repo" placeholder="lift-tracker" value="${escapeHtml(ghCfg.repo)}">
       <label class="field-label">Branch</label>
-      <input class="field-input" id="gh-branch" placeholder="main" value="${escapeAttr(ghCfg.branch || 'main')}">
+      <input class="field-input" id="gh-branch" placeholder="main" value="${escapeHtml(ghCfg.branch || 'main')}">
       <label class="field-label">Personal Access Token <span class="field-hint">(leave blank for read-only on this device)</span></label>
       <input class="field-input" id="gh-pat" type="password" placeholder="${ghCfg.pat ? '••••••••' : 'github_pat_…'}" autocomplete="off">
       <div class="settings-btn-row">
@@ -90,7 +91,7 @@ async function render() {
 
     <section class="settings-section">
       <div class="section-title">About</div>
-      <div class="settings-hint">Lift Tracker · v${APP_VERSION}</div>
+      <div class="settings-hint">Lift Tracker · ${escapeHtml(version)}</div>
     </section>
   `;
 
@@ -136,26 +137,19 @@ async function testSyncConnection() {
   resultEl.textContent = 'Testing…';
   resultEl.className = 'sync-test-result pending';
 
-  // Stage current form values temporarily so test reflects what's typed
+  // Test what's typed, not what's saved
   const owner = document.getElementById('gh-owner').value.trim();
   const repo = document.getElementById('gh-repo').value.trim();
   const branch = document.getElementById('gh-branch').value.trim() || 'main';
   const patEntered = document.getElementById('gh-pat').value;
-  const before = await sync.getConfig();
-  const stash = { owner: before.owner, repo: before.repo, branch: before.branch, pat: before.pat };
-  await sync.setConfig({ owner, repo, branch, pat: patEntered || before.pat });
-  try {
-    const r = await sync.testConnection();
-    if (r.ok) {
-      resultEl.textContent = `OK · ${r.mode === 'write' ? 'read+write' : 'read-only'}${r.fullName ? ` · ${r.fullName}` : ''}${r.note ? ` · ${r.note}` : ''}`;
-      resultEl.className = 'sync-test-result ok';
-    } else {
-      resultEl.textContent = `Failed: ${r.error}`;
-      resultEl.className = 'sync-test-result err';
-    }
-  } finally {
-    // Restore previous config if user didn't click Save
-    await sync.setConfig({ owner: stash.owner, repo: stash.repo, branch: stash.branch, pat: stash.pat });
+  const saved = await sync.getConfig();
+  const r = await sync.testConnection({ owner, repo, branch, pat: patEntered || saved.pat });
+  if (r.ok) {
+    resultEl.textContent = `OK · ${r.mode === 'write' ? 'read+write' : 'read-only'}${r.fullName ? ` · ${r.fullName}` : ''}${r.note ? ` · ${r.note}` : ''}`;
+    resultEl.className = 'sync-test-result ok';
+  } else {
+    resultEl.textContent = `Failed: ${r.error}`;
+    resultEl.className = 'sync-test-result err';
   }
 }
 
@@ -181,9 +175,6 @@ async function runSyncNow() {
   render();
 }
 
-function escapeAttr(s) {
-  return String(s ?? '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-}
 
 async function exportBackup() {
   const data = await storage.exportAll();
