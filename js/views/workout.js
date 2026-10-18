@@ -1,4 +1,4 @@
-import { PROGRAMS } from '../programs.js';
+import { PROGRAMS, suggestSets } from '../programs.js';
 import * as storage from '../storage.js';
 import * as sync from '../sync.js';
 import { showToast, refreshSyncIndicator } from '../app.js';
@@ -9,10 +9,19 @@ let sessionStart = null;
 let draftCache = {}; // { [exName]: { [setIdx]: { weight, reps, done }, note: string } }
 let unitsLabel = 'kg';
 
-function getSetClass(idx) {
-  if (idx === 0) return 'warm-up';
-  if (idx === 1) return 'working-1';
-  return 'working-2';
+function getSetClass(sets, si) {
+  if (sets[si] === 'Warm-up') return 'warm-up';
+  const workingIdx = si - (sets[0] === 'Warm-up' ? 1 : 0);
+  return workingIdx === 0 ? 'working-1' : 'working-2';
+}
+
+function stepper(field, si, val, fillClass, { placeholder = '—', inputmode = 'numeric', step = 1 } = {}) {
+  return `<div class="stepper">
+    <button class="step-btn" data-si="${si}" data-field="${field}" data-step="${-step}" aria-label="Decrease">−</button>
+    <input class="set-input ${fillClass}" type="number" inputmode="${inputmode}" id="inp-${field}-${si}"
+      value="${val}" placeholder="${placeholder}" data-si="${si}" data-field="${field}">
+    <button class="step-btn" data-si="${si}" data-field="${field}" data-step="${step}" aria-label="Increase">+</button>
+  </div>`;
 }
 
 function escapeHtml(s) {
@@ -59,8 +68,9 @@ async function renderExercise() {
   const program = PROGRAMS[currentDay];
   const ex = program.exercises[currentExIndex];
   const exState = getExState(ex.name);
-  const lastSets = await storage.getLastSets(currentDay, ex.name);
-  const lastNote = await storage.getLastNote(currentDay, ex.name);
+  const lastSets = await storage.getLastSets(null, ex.name);
+  const lastNote = await storage.getLastNote(null, ex.name);
+  const targets = suggestSets(ex, lastSets, unitsLabel);
 
   const total = program.exercises.length;
   const doneSoFar = program.exercises.filter((_, ei) => isExerciseDone(ei)).length;
@@ -90,7 +100,7 @@ async function renderExercise() {
     <div class="last-session-sets">`;
   if (lastSets && lastSets.length) {
     lastSets.forEach((s, i) => {
-      const label = ex.sets[i] || `Set ${i + 1}`;
+      const label = s.label || ex.sets[i] || `Set ${i + 1}`;
       html += `<div class="last-set-chip">
         <span class="chip-label">${label}</span>
         <span class="chip-val">${s.weight ? s.weight + unitsLabel : '—'} × ${s.reps || '—'}</span>
@@ -105,45 +115,50 @@ async function renderExercise() {
   }
   html += `</div>`;
 
+  const allDone = ex.sets.every((_, si) => (exState[si] || {}).done);
+  if (!allDone) {
+    html += `<button class="log-all-btn" id="btn-log-all">✓ Log all as planned${currentExIndex === total - 1 ? '' : ' → next'}</button>`;
+  }
+
+  const weightStep = (ex.inc || 2.5) * (unitsLabel === 'lb' ? 2 : 1);
   html += `<div class="sets-container">`;
   ex.sets.forEach((setLabel, si) => {
     const saved = exState[si] || {};
-    // Quick-fill: if no current draft value, prefill from last session.
-    const lastSet = lastSets && lastSets[si] ? lastSets[si] : null;
-    const weightVal = saved.weight != null && saved.weight !== ''
-      ? saved.weight
-      : (lastSet && lastSet.weight ? lastSet.weight : '');
-    const repsVal = saved.reps != null && saved.reps !== ''
-      ? saved.reps
-      : (lastSet && lastSet.reps ? lastSet.reps : '');
-    const isDraftFill = (saved.weight != null && saved.weight !== '') || (saved.reps != null && saved.reps !== '');
+    // Prefill from this session's draft, else the progression target.
+    const target = targets ? targets[si] : null;
+    const hasSaved = (k) => saved[k] != null && saved[k] !== '';
+    const weightVal = hasSaved('weight') ? saved.weight : (target ? target.weight : '');
+    const repsVal = hasSaved('reps') ? saved.reps : (target ? target.reps : '');
+    const isDraftFill = hasSaved('weight') || hasSaved('reps');
     const fillClass = !isDraftFill && (weightVal || repsVal) ? 'prefilled' : '';
+    const bump = target && target.bump && !isDraftFill
+      ? `<span class="set-target">↑ +${weightStep}${unitsLabel}</span>`
+      : '';
 
     const isDone = saved.done || false;
-    const setClass = getSetClass(si);
+    const setClass = getSetClass(ex.sets, si);
     html += `
       <div class="set-row ${setClass} ${isDone ? 'completed' : ''}" id="set-row-${si}">
-        <div class="set-label">${setLabel}</div>
+        <div class="set-head">
+          <div class="set-label">${setLabel}</div>
+          ${bump}
+          <button class="set-done-btn ${isDone ? 'done' : ''}" data-si="${si}" id="done-btn-${si}" aria-label="Mark set done">
+            ${isDone ? '✓' : '○'}
+          </button>
+        </div>
         <div class="input-group">
           ${ex.isTime ? `
-            <input class="set-input ${fillClass}" type="number" inputmode="numeric" id="inp-reps-${si}"
-              value="${repsVal}" placeholder="0" data-si="${si}" data-field="reps" style="width:72px">
+            ${stepper('reps', si, repsVal, fillClass, { placeholder: '0', step: 5 })}
             <span class="input-unit">sec</span>
           ` : ex.isBodyweight ? `
-            <input class="set-input ${fillClass}" type="number" inputmode="numeric" id="inp-reps-${si}"
-              value="${repsVal}" placeholder="0" data-si="${si}" data-field="reps" style="width:72px">
+            ${stepper('reps', si, repsVal, fillClass, { placeholder: '0' })}
             <span class="input-unit">reps</span>
           ` : `
-            <input class="set-input ${fillClass}" type="number" inputmode="decimal" id="inp-weight-${si}"
-              value="${weightVal}" placeholder="${unitsLabel}" data-si="${si}" data-field="weight">
+            ${stepper('weight', si, weightVal, fillClass, { placeholder: unitsLabel, inputmode: 'decimal', step: weightStep })}
             <span class="input-sep">×</span>
-            <input class="set-input ${fillClass}" type="number" inputmode="numeric" id="inp-reps-${si}"
-              value="${repsVal}" placeholder="—" data-si="${si}" data-field="reps">
+            ${stepper('reps', si, repsVal, fillClass)}
           `}
         </div>
-        <button class="set-done-btn ${isDone ? 'done' : ''}" data-si="${si}" id="done-btn-${si}">
-          ${isDone ? '✓' : '○'}
-        </button>
       </div>`;
   });
   html += `</div>`;
@@ -170,6 +185,11 @@ async function renderExercise() {
     el.addEventListener('input', onInputChange);
     el.addEventListener('focus', onInputFocus);
   });
+  view.querySelectorAll('.step-btn').forEach((el) => {
+    el.addEventListener('click', () => onStep(el));
+  });
+  const logAllBtn = document.getElementById('btn-log-all');
+  if (logAllBtn) logAllBtn.addEventListener('click', logAllAsPlanned);
   view.querySelectorAll('.set-done-btn').forEach((el) => {
     el.addEventListener('click', () => toggleDone(parseInt(el.dataset.si, 10)));
   });
@@ -193,6 +213,37 @@ async function onInputChange(e) {
   e.target.classList.remove('prefilled');
 }
 
+async function onStep(btn) {
+  const si = parseInt(btn.dataset.si, 10);
+  const field = btn.dataset.field;
+  const input = document.getElementById(`inp-${field}-${si}`);
+  const cur = parseFloat(input.value) || 0;
+  const next = Math.max(0, Math.round((cur + parseFloat(btn.dataset.step)) * 100) / 100);
+  input.value = String(next);
+  input.classList.remove('prefilled');
+  const ex = PROGRAMS[currentDay].exercises[currentExIndex];
+  await setSet(ex.name, si, { [field]: input.value });
+}
+
+function readSetInputs(si) {
+  const wEl = document.getElementById(`inp-weight-${si}`);
+  const rEl = document.getElementById(`inp-reps-${si}`);
+  const patch = {};
+  if (wEl) patch.weight = wEl.value;
+  if (rEl) patch.reps = rEl.value;
+  return patch;
+}
+
+// One tap: every unfinished set is logged with what's on screen, then move on.
+async function logAllAsPlanned() {
+  const ex = PROGRAMS[currentDay].exercises[currentExIndex];
+  for (let si = 0; si < ex.sets.length; si++) {
+    if (((draftCache[ex.name] || {})[si] || {}).done) continue;
+    await setSet(ex.name, si, { ...readSetInputs(si), done: true });
+  }
+  nextEx();
+}
+
 async function onNoteChange(e) {
   const ex = PROGRAMS[currentDay].exercises[currentExIndex];
   await setNote(ex.name, e.target.value);
@@ -201,14 +252,16 @@ async function onNoteChange(e) {
 async function toggleDone(si) {
   const ex = PROGRAMS[currentDay].exercises[currentExIndex];
   // Capture current input values into draft (for prefilled values that were never edited)
-  const wEl = document.getElementById(`inp-weight-${si}`);
-  const rEl = document.getElementById(`inp-reps-${si}`);
-  const patch = {};
-  if (wEl) patch.weight = wEl.value;
-  if (rEl) patch.reps = rEl.value;
-  patch.done = !((draftCache[ex.name] || {})[si] || {}).done;
-  await setSet(ex.name, si, patch);
+  const done = !((draftCache[ex.name] || {})[si] || {}).done;
+  await setSet(ex.name, si, { ...readSetInputs(si), done });
   await renderExercise();
+  // Last set ticked off → move to the next exercise automatically.
+  const exIdx = currentExIndex;
+  if (done && ex.sets.every((_, i) => (draftCache[ex.name][i] || {}).done)) {
+    setTimeout(() => {
+      if (currentExIndex === exIdx) nextEx();
+    }, 700);
+  }
 }
 
 function jumpToExercise(idx) {
@@ -289,6 +342,7 @@ async function saveSession() {
   const duration = sessionStart ? Math.round((Date.now() - sessionStart) / 60000) : null;
   const saved = await storage.saveSession({
     day: currentDay,
+    program: program.name,
     date: new Date().toISOString(),
     durationMin: duration,
     exercises,

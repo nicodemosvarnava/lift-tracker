@@ -112,11 +112,12 @@ function exHasData(ex) {
   );
 }
 
+// Pass day = null to search every day (exercises can move between days).
 export async function getLastSession(day, exName, { withData = false } = {}) {
   const all = await getSessions();
   for (let i = all.length - 1; i >= 0; i--) {
     const s = all[i];
-    if (s.day !== day) continue;
+    if (day && s.day !== day) continue;
     const ex = (s.exercises || []).find((e) => e.name === exName);
     if (ex && (!withData || exHasData(ex))) return ex;
   }
@@ -136,7 +137,7 @@ export async function getLastNote(day, exName) {
   const all = await getSessions();
   for (let i = all.length - 1; i >= 0; i--) {
     const s = all[i];
-    if (s.day !== day) continue;
+    if (day && s.day !== day) continue;
     const ex = (s.exercises || []).find((e) => e.name === exName);
     if (ex && ex.note) return ex.note;
   }
