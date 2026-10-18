@@ -34,7 +34,7 @@ async function render() {
     const d = new Date(session.date);
     const dateStr = d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
     html += `<div class="history-session">
-      <div class="history-date">Day ${session.day} · ${dateStr}</div>`;
+      <div class="history-date">${session.program || `Day ${session.day}`} · ${dateStr}</div>`;
 
     (session.exercises || []).forEach((ex) => {
       const hasAny = (ex.sets || []).some((s) => s && (s.weight || s.reps));

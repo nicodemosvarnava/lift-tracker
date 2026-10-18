@@ -35,12 +35,12 @@ async function render() {
       if (ex) selectedExercise = ex.name;
     }
     if (!selectedExercise) {
-      const all = allExercises();
+      const all = allExercises(sessions);
       if (all.length) selectedExercise = all[0].name;
     }
   }
 
-  const selectedMeta = allExercises().find((e) => e.name === selectedExercise);
+  const selectedMeta = allExercises(sessions).find((e) => e.name === selectedExercise);
   const isBodyweight = !!(selectedMeta && selectedMeta.isBodyweight);
 
   // Calendar data
@@ -109,7 +109,7 @@ async function render() {
     }
   }
 
-  const exerciseOptions = allExercises()
+  const exerciseOptions = allExercises(sessions)
     .map((e) => `<option value="${escapeAttr(e.name)}" ${e.name === selectedExercise ? 'selected' : ''}>${e.name} <em>(${e.day})</em></option>`)
     .join('');
 
