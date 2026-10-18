@@ -9,7 +9,8 @@
 <meta name="apple-mobile-web-app-title" content="Lift">
 <title>Lift Tracker</title>
 <link rel="manifest" href="./manifest.webmanifest">
-<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="./icons/logo.svg">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./css/app.css">
 </head>
@@ -19,7 +20,20 @@
 <div id="workout-shell">
   <div class="header">
     <div class="header-top">
-      <div class="app-title">LIFT</div>
+      <div class="brand">
+        <span class="brand-tile"><svg class="brand-mark" viewBox="0 0 512 512" aria-hidden="true">
+          <defs><linearGradient id="brandLime" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e4ff6b"/><stop offset="1" stop-color="#a6d61c"/></linearGradient></defs>
+          <g fill="url(#brandLime)" transform="translate(0 24)">
+            <path d="M176 368 L256 288 L336 368" fill="none" stroke="#c8f135" stroke-opacity="0.35" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M176 342 L256 262 L336 342" fill="none" stroke="url(#brandLime)" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="52" y="160" width="408" height="22" rx="11"/>
+            <rect x="116" y="76" width="40" height="190" rx="12"/><rect x="356" y="76" width="40" height="190" rx="12"/>
+            <rect x="80" y="106" width="28" height="130" rx="10"/><rect x="404" y="106" width="28" height="130" rx="10"/>
+            <rect x="160" y="150" width="12" height="42" rx="4"/><rect x="340" y="150" width="12" height="42" rx="4"/>
+          </g>
+        </svg></span>
+        <span class="app-title">LIFT</span>
+      </div>
       <div class="header-right">
         <span class="sync-dot off" id="sync-dot" title="Sync not configured"></span>
         <div class="date-badge" id="date-badge">—</div>
@@ -49,7 +63,7 @@
   </div>
 
   <div class="done-screen" id="done-screen">
-    <div class="done-icon">💪</div>
+    <div class="done-icon"><img src="./icons/logo.svg" alt=""></div>
     <div class="done-title">SESSION DONE</div>
     <div class="done-sub" id="done-duration">—</div>
     <div class="session-summary" id="session-summary"></div>

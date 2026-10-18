@@ -1,10 +1,12 @@
 // Bump this when shipping changes — old caches are evicted on activate.
-const CACHE = 'lift-v6';
+const CACHE = 'lift-v7';
 
 const APP_SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
+  './icons/logo.svg',
+  './icons/apple-touch-icon.png',
   './css/app.css',
   './js/app.js',
   './js/programs.js',

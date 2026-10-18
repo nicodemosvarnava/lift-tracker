@@ -10,25 +10,32 @@
   --warm-up: #3a8fd4;
   --set1: #c8f135;
   --set2: #ff6b35;
+  --accent-grad: linear-gradient(180deg, #e4ff6b 0%, #b5e61f 100%);
+  --accent-glow: 0 6px 24px -6px rgba(200, 241, 53, 0.55);
+  --card-grad: linear-gradient(180deg, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0) 60%);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
 body {
-  background: var(--bg);
+  background:
+    radial-gradient(120% 50% at 50% -10%, rgba(200, 241, 53, 0.08) 0%, rgba(200, 241, 53, 0) 60%) no-repeat,
+    var(--bg);
   color: var(--text);
   font-family: 'DM Sans', sans-serif;
   min-height: 100vh;
   max-width: 480px;
   margin: 0 auto;
-  padding-bottom: 80px;
+  padding-bottom: calc(84px + env(safe-area-inset-bottom));
 }
 
 /* HEADER */
 .header {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 16px 20px 12px;
+  background: rgba(14, 14, 14, 0.78);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: calc(14px + env(safe-area-inset-top)) 20px 12px;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -38,14 +45,37 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
+
+.brand { display: flex; align-items: center; gap: 10px; }
+
+.brand-tile {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(80% 60% at 50% 85%, rgba(200, 241, 53, 0.28) 0%, rgba(200, 241, 53, 0) 100%),
+    linear-gradient(180deg, #1c1f17 0%, #070707 100%);
+  border: 1px solid rgba(200, 241, 53, 0.22);
+  box-shadow: 0 0 18px -6px rgba(200, 241, 53, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.brand-mark { width: 28px; height: 28px; display: block; }
 
 .app-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px;
-  letter-spacing: 2px;
-  color: var(--accent);
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: 4px;
+  padding-top: 3px;
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transform: skewX(-8deg);
 }
 
 .date-badge {
@@ -68,17 +98,24 @@ body {
   background: var(--border);
 }
 
-.sync-dot.ok { background: var(--accent); box-shadow: 0 0 4px rgba(200, 241, 53, 0.6); }
+.sync-dot.ok { background: var(--accent); box-shadow: 0 0 8px rgba(200, 241, 53, 0.8); }
 .sync-dot.pending { background: var(--accent2); box-shadow: 0 0 4px rgba(255, 107, 53, 0.6); }
 .sync-dot.off { background: var(--border); }
 
 /* DAY TABS */
-.day-tabs { display: flex; gap: 8px; }
+.day-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
 
 .day-tab {
   flex: 1;
   padding: 8px 0;
-  border: 1px solid var(--border);
+  border: 1px solid transparent;
   background: transparent;
   color: var(--muted);
   font-family: 'DM Mono', monospace;
@@ -90,10 +127,11 @@ body {
 }
 
 .day-tab.active {
-  background: var(--accent);
+  background: var(--accent-grad);
   color: #000;
   border-color: var(--accent);
   font-weight: 500;
+  box-shadow: var(--accent-glow);
 }
 
 /* PROGRESS BAR */
@@ -108,8 +146,8 @@ body {
   margin-bottom: 5px;
 }
 
-.progress-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
-.progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.4s ease; }
+.progress-bar { height: 4px; background: var(--surface2); border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, #a6d61c, #e4ff6b); border-radius: 4px; box-shadow: 0 0 10px rgba(200, 241, 53, 0.6); transition: width 0.4s ease; }
 
 /* EXERCISE DROPDOWN */
 .ex-dropdown-wrap { padding: 10px 20px 0; }
@@ -139,9 +177,10 @@ body {
 
 .ex-number {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 80px;
+  font-size: 96px;
   line-height: 1;
-  color: var(--surface2);
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(200, 241, 53, 0.18);
   position: absolute;
   right: 20px;
   top: 10px;
@@ -163,8 +202,8 @@ body {
 
 .ex-name {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 38px;
-  letter-spacing: 1px;
+  font-size: 42px;
+  letter-spacing: 1.5px;
   color: var(--text);
   line-height: 1.1;
   padding-right: 60px;
@@ -253,7 +292,7 @@ body {
 .sets-container { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
 
 .set-row {
-  background: var(--surface);
+  background: var(--card-grad), var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 12px 14px;
@@ -277,7 +316,7 @@ body {
 .set-row.warm-up { border-left: 3px solid var(--warm-up); }
 .set-row.working-1 { border-left: 3px solid var(--set1); }
 .set-row.working-2 { border-left: 3px solid var(--set2); }
-.set-row.completed { opacity: 0.6; }
+.set-row.completed { opacity: 0.55; }
 
 .set-label {
   font-family: 'DM Mono', monospace;
@@ -307,7 +346,7 @@ body {
   cursor: pointer;
   touch-action: manipulation;
 }
-.step-btn:active { background: var(--border); }
+.step-btn:active { background: var(--border); transform: scale(0.94); }
 
 .log-all-btn {
   width: 100%;
@@ -315,14 +354,18 @@ body {
   margin-bottom: 12px;
   border-radius: 12px;
   border: none;
-  background: var(--accent);
+  background: var(--accent-grad);
+  box-shadow: var(--accent-glow);
   color: #000;
   font-family: 'DM Mono', monospace;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.5px;
   cursor: pointer;
+  transition: transform 0.1s;
 }
+
+.log-all-btn:active, .save-btn:active, .nav-btn.next:active { transform: scale(0.98); }
 
 .set-input {
   background: var(--surface2);
@@ -367,7 +410,7 @@ body {
   flex-shrink: 0;
 }
 
-.set-done-btn.done { background: var(--accent); border-color: var(--accent); color: #000; }
+.set-done-btn.done { background: var(--accent-grad); border-color: var(--accent); color: #000; box-shadow: 0 0 14px -2px rgba(200, 241, 53, 0.6); }
 
 /* NAV BUTTONS */
 .nav-buttons { display: flex; gap: 10px; margin-top: 8px; }
@@ -388,13 +431,15 @@ body {
 .nav-btn.prev.disabled { opacity: 0.3; pointer-events: none; }
 
 .nav-btn.next {
-  background: var(--accent);
+  background: var(--accent-grad);
+  box-shadow: var(--accent-glow);
   color: #000;
   border-color: var(--accent);
   font-weight: 500;
 }
 
 .nav-btn.next:disabled {
+  box-shadow: none;
   background: var(--surface2);
   color: var(--muted);
   border-color: var(--border);
@@ -403,20 +448,25 @@ body {
 /* DONE SCREEN */
 .done-screen { display: none; padding: 40px 24px; text-align: center; }
 .done-screen.visible { display: block; }
-.done-icon { font-size: 64px; margin-bottom: 16px; }
+.done-icon { margin: 0 auto 20px; width: 112px; height: 112px; filter: drop-shadow(0 10px 30px rgba(200, 241, 53, 0.35)); animation: pop 0.5s cubic-bezier(.2, 1.4, .4, 1) both; }
+.done-icon img { width: 100%; height: 100%; display: block; }
+@keyframes pop { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
 .done-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px;
-  color: var(--accent);
-  letter-spacing: 2px;
+  font-size: 52px;
+  letter-spacing: 3px;
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   margin-bottom: 8px;
 }
 
 .done-sub { font-size: 14px; color: var(--muted); margin-bottom: 32px; }
 
 .session-summary {
-  background: var(--surface);
+  background: var(--card-grad), var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 20px;
@@ -449,7 +499,8 @@ body {
 .save-btn {
   width: 100%;
   padding: 16px;
-  background: var(--accent);
+  background: var(--accent-grad);
+  box-shadow: var(--accent-glow);
   color: #000;
   border: none;
   border-radius: 12px;
@@ -477,7 +528,7 @@ body {
 .history-view.visible { display: block; }
 
 .history-session {
-  background: var(--surface);
+  background: var(--card-grad), var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
@@ -515,7 +566,7 @@ body {
 .progress-view.visible { display: block; }
 
 .progress-section {
-  background: var(--surface);
+  background: var(--card-grad), var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
@@ -644,7 +695,7 @@ body {
 .settings-view.visible { display: block; }
 
 .settings-section {
-  background: var(--surface);
+  background: var(--card-grad), var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
@@ -781,8 +832,11 @@ body {
   transform: translateX(-50%);
   width: 100%;
   max-width: 480px;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
+  background: rgba(14, 14, 14, 0.82);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: env(safe-area-inset-bottom);
   display: flex;
   z-index: 100;
 }
@@ -802,19 +856,37 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  position: relative;
   transition: color 0.15s;
 }
 
+.bottom-nav-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 28px;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(200, 241, 53, 0.9);
+  transform: translateX(-50%) scaleX(0);
+  transition: transform 0.2s ease;
+}
+
 .bottom-nav-btn.active { color: var(--accent); }
-.bottom-nav-btn svg { width: 20px; height: 20px; stroke-width: 1.5; }
+.bottom-nav-btn.active::before { transform: translateX(-50%) scaleX(1); }
+.bottom-nav-btn svg { width: 22px; height: 22px; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.bottom-nav-btn.active svg { filter: drop-shadow(0 0 6px rgba(200, 241, 53, 0.55)); }
 
 /* TOAST */
 .toast {
   position: fixed;
-  bottom: 80px;
+  bottom: calc(84px + env(safe-area-inset-bottom));
   left: 50%;
   transform: translateX(-50%) translateY(20px);
-  background: var(--accent);
+  background: var(--accent-grad);
+  box-shadow: var(--accent-glow);
   color: #000;
   font-family: 'DM Mono', monospace;
   font-size: 13px;
