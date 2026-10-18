@@ -1,4 +1,5 @@
 import * as storage from '../storage.js';
+import { escapeHtml } from '../util.js';
 
 let unitsLabel = 'kg';
 
@@ -40,7 +41,7 @@ async function render() {
       const hasAny = (ex.sets || []).some((s) => s && (s.weight || s.reps));
       if (!hasAny && !ex.note) return;
       html += `<div class="history-ex">
-        <div class="history-ex-name">${ex.name}</div>
+        <div class="history-ex-name">${escapeHtml(ex.name)}</div>
         <div class="history-sets-row">`;
       (ex.sets || []).forEach((s, si) => {
         if (s && (s.weight || s.reps)) {
@@ -61,9 +62,6 @@ async function render() {
   container.innerHTML = html;
 }
 
-function escapeHtml(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
 
 function abbrev(label) {
   if (label === 'Warm-up') return 'W';

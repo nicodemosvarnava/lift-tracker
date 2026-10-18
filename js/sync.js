@@ -50,33 +50,43 @@ async function pullViaRaw(c) {
   if (res.status === 404) return { sessions: [], sha: null };
   if (!res.ok) throw new Error(`Pull failed: ${res.status}`);
   const arr = await res.json();
-  return { sessions: Array.isArray(arr) ? arr : [], sha: null };
+  if (!Array.isArray(arr)) throw new Error(`${DATA_PATH} is not an array`);
+  return { sessions: arr, sha: null };
 }
 
 async function pullViaApi(c) {
   const url = `https://api.github.com/repos/${encodeURIComponent(c.owner)}/${encodeURIComponent(c.repo)}/contents/${DATA_PATH}?ref=${encodeURIComponent(c.branch)}`;
-  const res = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${c.pat}`,
-      Accept: 'application/vnd.github+json',
-    },
-    cache: 'no-store',
-  });
+  const res = await fetch(url, { headers: authHeaders(c), cache: 'no-store' });
   if (res.status === 404) return { sessions: [], sha: null };
   if (!res.ok) {
     const body = await res.text();
     throw new Error(`Pull failed: ${res.status} ${body.slice(0, 120)}`);
   }
   const data = await res.json();
-  const decoded = decodeBase64Utf8(data.content || '');
-  let sessions = [];
+  // The contents endpoint omits the body for files over 1 MB (encoding "none");
+  // the blob endpoint serves up to 100 MB.
+  const b64 = data.encoding === 'base64' ? data.content : await fetchBlob(c, data.sha);
+  // Never fall back to [] here: pushSession merges into whatever this returns,
+  // so an empty list would overwrite the whole history with one session.
+  let parsed;
   try {
-    const parsed = JSON.parse(decoded || '[]');
-    sessions = Array.isArray(parsed) ? parsed : [];
+    parsed = JSON.parse(decodeBase64Utf8(b64 || '') || '[]');
   } catch {
-    sessions = [];
+    throw new Error(`${DATA_PATH} is not valid JSON — not touching it`);
   }
-  return { sessions, sha: data.sha };
+  if (!Array.isArray(parsed)) throw new Error(`${DATA_PATH} is not an array — not touching it`);
+  return { sessions: parsed, sha: data.sha };
+}
+
+async function fetchBlob(c, sha) {
+  const url = `https://api.github.com/repos/${encodeURIComponent(c.owner)}/${encodeURIComponent(c.repo)}/git/blobs/${sha}`;
+  const res = await fetch(url, { headers: authHeaders(c), cache: 'no-store' });
+  if (!res.ok) throw new Error(`Blob fetch failed: ${res.status}`);
+  return (await res.json()).content;
+}
+
+function authHeaders(c) {
+  return { Authorization: `Bearer ${c.pat}`, Accept: 'application/vnd.github+json' };
 }
 
 // ---- Push ----
@@ -101,11 +111,7 @@ export async function pushSession(session, { commitMessage } = {}) {
     if (sha) body.sha = sha;
     const res = await fetch(url, {
       method: 'PUT',
-      headers: {
-        Authorization: `Bearer ${c.pat}`,
-        Accept: 'application/vnd.github+json',
-        'Content-Type': 'application/json',
-      },
+      headers: { ...authHeaders(c), 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     });
     if (res.ok) {
@@ -161,15 +167,14 @@ export async function flushQueue() {
 
 // ---- Test ----
 
-export async function testConnection() {
-  const c = await getConfig();
+// Tests `c` (defaults to the saved config) without saving anything.
+export async function testConnection(c) {
+  c = c || (await getConfig());
   if (!c.owner || !c.repo) return { ok: false, error: 'Owner and repo required' };
   try {
     if (c.pat) {
       const url = `https://api.github.com/repos/${encodeURIComponent(c.owner)}/${encodeURIComponent(c.repo)}`;
-      const res = await fetch(url, {
-        headers: { Authorization: `Bearer ${c.pat}`, Accept: 'application/vnd.github+json' },
-      });
+      const res = await fetch(url, { headers: authHeaders(c) });
       if (res.status === 404) return { ok: false, error: 'Repo not found (or token lacks access)' };
       if (res.status === 401) return { ok: false, error: 'Token invalid' };
       if (!res.ok) return { ok: false, error: `HTTP ${res.status}` };
