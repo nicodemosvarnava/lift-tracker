@@ -38,7 +38,7 @@ A one-time migration on first init copies the legacy `liftHistory` / `liftState`
 
 `service-worker.js`:
 
-1. **Bump `CACHE` on every shipped change** (currently `'lift-v7'`). Old caches are evicted only on activate when the cache name changes; otherwise installed phones keep serving stale JS forever.
+1. **Bump `CACHE` on every shipped change** (currently `'lift-v8'`). Old caches are evicted only on activate when the cache name changes; otherwise installed phones keep serving stale JS forever.
 2. **Add new top-level modules to `APP_SHELL`**. The service worker precaches that exact list — a new file under `js/views/` or `js/` won't be reachable offline if it's missing.
 3. **Never cache `api.github.com` or `raw.githubusercontent.com`.** The fetch handler explicitly skips them so sync always sees fresh remote state. If you add another data origin, exempt it the same way.
 
