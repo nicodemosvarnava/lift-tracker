@@ -1,5 +1,5 @@
 // Bump this when shipping changes — old caches are evicted on activate.
-const CACHE = 'lift-v7';
+const CACHE = 'lift-v8';
 
 const APP_SHELL = [
   './',
@@ -24,7 +24,11 @@ const APP_SHELL = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(APP_SHELL)).then(() => self.skipWaiting())
+    // cache: 'reload' skips the HTTP cache — GitHub Pages sends max-age=600,
+    // so a plain addAll can precache the *previous* release's files.
+    caches.open(CACHE)
+      .then((cache) => cache.addAll(APP_SHELL.map((u) => new Request(u, { cache: 'reload' }))))
+      .then(() => self.skipWaiting())
   );
 });
 

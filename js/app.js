@@ -91,7 +91,22 @@ async function init() {
 
   // Register service worker (only when served over http(s); won't fire on file://)
   if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-    navigator.serviceWorker.register('./service-worker.js').catch((err) => {
+    // An installed iOS PWA resumes the already-loaded page instead of
+    // navigating, so the browser never re-checks the service worker. Check on
+    // every return to the foreground, and reload once a new version takes over
+    // (the in-progress workout is safe: drafts live in IndexedDB).
+    const hadController = !!navigator.serviceWorker.controller;
+    let reloading = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!hadController || reloading) return;
+      reloading = true;
+      location.reload();
+    });
+    navigator.serviceWorker.register('./service-worker.js', { updateViaCache: 'none' }).then((reg) => {
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') reg.update().catch(() => {});
+      });
+    }).catch((err) => {
       console.warn('SW registration failed:', err);
     });
   }
