@@ -5408,5 +5408,207 @@
       }
     ],
     "id": "mw0axyrj68vpqg"
+  },
+  {
+    "day": "B",
+    "program": "Full Body B",
+    "date": "2026-11-03T07:21:57.365Z",
+    "durationMin": 58,
+    "exercises": [
+      {
+        "name": "Deadlift",
+        "muscle": "Posterior Chain",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "20",
+            "reps": "12",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "50",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "60",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 3",
+            "weight": "60",
+            "reps": "8",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "Pull-ups",
+        "muscle": "Back / Lats",
+        "sets": [
+          {
+            "label": "Set 1",
+            "weight": null,
+            "reps": "8",
+            "isTime": false,
+            "isBodyweight": true,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": null,
+            "reps": "6",
+            "isTime": false,
+            "isBodyweight": true,
+            "done": true
+          },
+          {
+            "label": "Set 3",
+            "weight": null,
+            "reps": "5",
+            "isTime": false,
+            "isBodyweight": true,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "Overhead Press",
+        "muscle": "Shoulders",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "12",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "20",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "20",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "Incline DB Press",
+        "muscle": "Upper Chest",
+        "sets": [
+          {
+            "label": "Set 1",
+            "weight": "20",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "40",
+            "reps": "9",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "Tricep Dips",
+        "muscle": "Triceps",
+        "sets": [
+          {
+            "label": "Set 1",
+            "weight": "16.25",
+            "reps": "8",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "21.25",
+            "reps": "12",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "Rear Delt Fly",
+        "muscle": "Rear Delts",
+        "sets": [
+          {
+            "label": "Set 1",
+            "weight": "20",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "30",
+            "reps": "8",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "Russian Twists",
+        "muscle": "Obliques",
+        "sets": [
+          {
+            "label": "Round 1",
+            "weight": "0",
+            "reps": "20",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Round 2",
+            "weight": "0",
+            "reps": "20",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      }
+    ],
+    "id": "mw0d0sxj3x7oa9"
   }
 ]
