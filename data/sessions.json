@@ -5812,5 +5812,146 @@
       }
     ],
     "id": "mwiw7f5q5lg7po"
+  },
+  {
+    "day": "A",
+    "program": "Full Body A",
+    "date": "2026-11-19T05:45:43.407Z",
+    "durationMin": 0,
+    "exercises": [
+      {
+        "name": "Squat",
+        "muscle": "Quads / Glutes",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "0",
+            "reps": "12",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "40",
+            "reps": "11",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "60",
+            "reps": "9",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 3",
+            "weight": "60",
+            "reps": "9",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "Bench Press",
+        "muscle": "Chest",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "20",
+            "reps": "14",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "50",
+            "reps": "9",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "60",
+            "reps": "6",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 3",
+            "weight": "70",
+            "reps": "3",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "Seated Cable Row",
+        "muscle": "Mid Back",
+        "sets": [
+          {
+            "label": "Warm-up",
+            "weight": "37.5",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 1",
+            "weight": "45",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Set 2",
+            "weight": "52.5",
+            "reps": "10",
+            "isTime": false,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      },
+      {
+        "name": "Plank",
+        "muscle": "Core",
+        "sets": [
+          {
+            "label": "Round 1",
+            "weight": null,
+            "reps": "50",
+            "isTime": true,
+            "isBodyweight": false,
+            "done": true
+          },
+          {
+            "label": "Round 2",
+            "weight": null,
+            "reps": "50",
+            "isTime": true,
+            "isBodyweight": false,
+            "done": true
+          }
+        ],
+        "note": null
+      }
+    ],
+    "id": "mwn4modsgah2qq"
   }
 ]
